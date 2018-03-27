@@ -27,7 +27,7 @@ td {
 .navbar {
    overflow: hidden;
    background-color: #E0E0E3;
-   position: fixed;
+   position: relative;
    top: 0;
    width: 100%;
    /* opacity: 0.5; */
@@ -43,7 +43,7 @@ td {
 
 #refresh {
    float: left;
-   margin-top: 10%;
+   margin-top: 5%;
    margin-left: 15%;
    /* text-align: center; */
 }
@@ -60,7 +60,7 @@ td {
 
 #game_area {
    float: inherit;
-   padding-top: 100px;
+   padding-top: 20px;
 }
 
 #title {
@@ -112,10 +112,10 @@ td {
    /* margin: 80px; */
    /* color: #030C68; */
    float: left;
-   top: 85;
+   /* top: 40; */
    left: 0;
    height: 100%;
-   position: fixed;
+   position: relative;
    overflow: hidden;
    background-color: #E7E7E8;
    max-width: 140px
