@@ -1,0 +1,39 @@
+<html>
+<head>
+
+   <link rel="stylesheet" href="../css/game.css">
+
+</head>
+<body>
+
+   <div id="title" class="navbar">
+      <h2>Welcome Aboard, Enjoy the Game</h2>
+   </div>
+
+   <div id="main_index" class="main">
+      <form name="myForm" action="game.html" method="GET" onsubmit="return validateForm()">
+         <input type="text" name="uname" value="" placeholder="username"><br></br>
+         <b>
+         Level: </b>
+         <select name="level">
+           <option value="1">Easy</option>
+           <option value="2">Normal</option>
+           <option value="3">Hard</option>
+        </select> <br></br>
+         <input type="submit" value="Submit">
+      </form>
+   </div>
+   <!-- <h2 title="I am hovering over the text">This is the text I want to have a mousover</h2> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript" charset="utf-8" src="../js/ticTac.js">
+   // function validateForm() {
+   //    var x = document.forms["myForm"]["uname"].value;
+   //    console.log(x)
+   //        // if (x == "") {
+   //        //     alert("Name must be filled out");
+   //        //     return false;
+   //        // }
+   // }
+   </script>
+</body>
+</html>

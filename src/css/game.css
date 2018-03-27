@@ -1,0 +1,168 @@
+body {
+   margin: 0;
+   /* background-color: #E7FBDC; */
+   /* margin-top: 100px */
+}
+td {
+   /* border: 1px solid black; */
+   height:100px;
+   width:100px;
+   float: left;
+   padding: 2px;
+   text-align: center;
+   /* text-decoration-style: solid; */
+   position: relative;
+   /* background-color: red */
+}
+
+.main {
+   padding: 16px;
+   margin-top: 0;
+   margin-left: 150px;
+   /* float: left; */
+   /* position: fixed; */
+   /* text-align:center */
+}
+
+.navbar {
+   overflow: hidden;
+   background-color: #E0E0E3;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   /* opacity: 0.5; */
+   /* filter: alpha(opacity=50); */
+   /* height: 60px; */
+}
+
+.player_info {
+   /* border: 1px solid gray; */
+   margin-top: 30%;
+   padding: 10px;
+}
+
+#refresh {
+   float: left;
+   margin-top: 10%;
+   margin-left: 15%;
+   /* text-align: center; */
+}
+
+#refresh img {
+   height: 10px;
+   width: 10px;
+}
+
+#refresh button {
+   padding: 1px;
+   border-radius: 5px;
+}
+
+#game_area {
+   float: inherit;
+   padding-top: 100px;
+}
+
+#title {
+   /* opacity: 20%; */
+   /* position: relative; */
+   /* float: left; */
+   /* top: 50%; */
+   /* transform: translateX(40%); */
+   text-align: center;
+   margin-top: -1%;
+   color: #C70039;
+   /* transform: translateZ(100px); */
+}
+
+#menu {
+   margin-top: -1.5%;
+   margin-left: 10%;
+   opacity: 1;
+   /* padding: 5px; */
+   /* float: left; */
+}
+
+#menu ul {
+   list-style-type: none;
+   /* margin: 0; */
+
+   overflow: hidden;
+}
+
+#menu li {
+   padding: 5px;
+   display: inline-block;
+}
+
+#menu li a {
+   text-decoration: none;
+}
+
+#uname h2 {
+   text-transform: capitalize;
+   /* font-size: */
+}
+
+#main_index {
+   padding-top: 100px;
+}
+
+#leftnav {
+   /* margin: 80px; */
+   /* color: #030C68; */
+   float: left;
+   top: 85;
+   left: 0;
+   height: 100%;
+   position: fixed;
+   overflow: hidden;
+   background-color: #E7E7E8;
+   max-width: 140px
+   /* padding: 10px; */
+   /* border-right: 1px solid black; */
+
+}
+
+#one {
+   border-right: 1px solid black;
+   border-bottom: 1px solid black
+}
+#two {
+   /* border-left: 1px solid black; */
+   border-bottom: 1px solid black
+}
+#three {
+   border-left: 1px solid black;
+   border-bottom: 1px solid black
+}
+#four {
+   border-right: 1px solid black;
+   border-bottom: 1px solid black
+}
+#five {
+   border-right: 1px solid black;
+   border-bottom: 1px solid black
+}
+#six {
+   /* border-right: 1px solid black; */
+   border-bottom: 1px solid black
+}
+#seven {
+   border-right: 1px solid black;
+   /* border-bottom: 1px solid black */
+}
+#eight {
+   border-right: 1px solid black;
+   /* border-bottom: 1px solid black */
+}
+#nine {
+   /* border-right: 1px solid black; */
+   /* border-bottom: 1px solid black */
+}
+#changed {
+   background-color: #DDDDDD;
+}
+#marked {
+   border: 0.5px red
+}
