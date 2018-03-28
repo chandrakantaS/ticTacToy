@@ -5,7 +5,7 @@ winningCombos = [
    [1,2,3], [1,4,7], [2,5,8], [3,6,9], [4,5,6], [1,5,9], [3,5,7], [7,8,9]
 ], corners = [1, 3, 7, 9], markedWithX = [], markedWith0 = [];
 
-let level;
+let level, noOfPlayers;
 function deleteArrEle(arr, ele) {
    let newArr = arr;
    arr = [];
@@ -140,14 +140,92 @@ function getQueryParams() {
    return vars
 }
 
-function validateForm() {
-   // console.log('validateFormS')
-   let x = document.forms["myForm"]["uname"].value;
-   x = x.replace(/\s/, '');
-   document.forms["myForm"]["uname"].value = x;
-   // console.log('x ', x)
+$('SELECT#player_type').on('change',function(){
+
+$('#myForm').children().remove();
+
+   noOfPlayers = $("option:selected").val();
+   // console.log(noOfPlayers);
+   var formButton = $('<input />', { id: 'savebutton', type: 'submit', value: 'Save' });
+   if (noOfPlayers === '1') {
+      // console.log('append form');
+
+      $('#myForm').append(
+         $('<div />', {id: 'form1'})
+      ).append(
+         $('<form />', {name: 'myForm1', action: 'game.html', method: 'GET', onsubmit: "return validateForm1()" })
+         .append(
+            $('<br />'),
+            $('<input />', { id: 'uname', name: 'uname', placeholder: 'username', type: 'text' }),
+            $('<br />'),
+            $('<br />'),
+            $('<select />', {name: 'level'}).append(
+               $('<option />', {value: 1, text: 'Easy'}),
+               $('<option />', {value: 2, text: 'Normal'}),
+               $('<option />', {value: 3, text: 'Hard'})
+            ),
+            $('<br />'),
+            $('<br />'),
+            formButton
+         )
+      );
+
+   }
+   if (noOfPlayers === '2') {
+      $('#myForm').append(
+         $('<div />', {id: 'form2'})
+      ).append(
+         $('<form />', { name: 'myForm2', action: 'game.html', method: 'GET', onsubmit: "return validateForm2()" })
+         .append(
+            $('<br />'),
+            $('<input />', { id: 'uname', name: 'uname1', placeholder: 'Player1', type: 'text' }),$('<br />'),$('<br />'),
+            $('<input />', { id: 'uname', name: 'uname2', placeholder: 'Player2', type: 'text' }),
+            $('<br />'),
+            $('<br />'),
+            formButton
+         )
+      )
+   }
+   // code
+});
+
+function validateForm2() {
+   console.log('validateFormS');
+
+   let user1 = document.forms["myForm2"]["uname1"].value;
+   let user2 = document.forms["myForm2"]["uname2"].value;
+
+   if (!user1) {
+      alert('Please choose a username for Player1');
+      return false;
+   }if (!user2) {
+      alert('Please choose a username for Player2');
+      return false;
+   } else {
+      // x = x.replace(/\s/, '');
+      // // console.log('x: ', x)
+      // document.forms["myForm1"]["uname"].value = x;
+      return true;
+
+   }
+
+}
+
+function validateForm1() {
+   // console.log('validateFormS');
+
+   let x = document.forms["myForm1"]["uname"].value;
+   console.log('x: ', x)
+   // return false;
+   // x = x.replace(/\s/, '');
+   // console.log('x: ', x)
+   // document.forms["myForm"]["uname"].value = x;
+   console.log('x ', x)
    // return false;
    if (x) {
+      x = x.replace(/\s/, '');
+      // console.log('x: ', x)
+      document.forms["myForm1"]["uname"].value = x;
       return true;
    } else {
       alert('Please choose a username');
@@ -168,21 +246,6 @@ function declareWinner(winner) {
    }, 500)
    //$('td').unbind("click");
 }
-
-(function setProfile() {
-   let params = getQueryParams();
-   level = params.level;
-   let h = $('<h2>'+params.uname+'</h2>');
-
-   if(params.uname && params.uname.length > 10) {
-      h = $('<h2 title='+params.uname+'>'+params.uname.slice(0,7)+'...</h2>');
-   }
-
-   let p = $('<p>'+level+'</p>')
-
-   $(document.getElementById('uname')).append(h)
-   $(document.getElementById('level')).append(p);
-})();
 
 function handlePromise (res) {
    let arr = this;
@@ -265,7 +328,7 @@ async function markSquareFor0(squareToMark0) {
 
    // console.log('toSelect', toSelect)
    toSelect.css('color', 'green')
-   $(toSelect).text('0');
+   $(toSelect).text('O');
    markedWith0.push(textToNumber[squareToMark0]);
    markedSquares.push(textToNumber[squareToMark0]);
 
@@ -281,30 +344,125 @@ async function markSquareFor0(squareToMark0) {
    $(toSelect).unbind("click");
 }
 
-$("td").click(async function(){
-   let squareToMark0, wins,
-   selectedSquare = textToNumber[this.id];
+function processSinglePlayer() {
+   $("td").click(async function(){
 
-   markedSquares.push(textToNumber[this.id]);
-   markedWithX.push(textToNumber[this.id]);
-   // let div = document.createElement('div');
-   // $(div).text('X')
-   // $(this).append($(div));
-   // $(this).attr('id', 'marked');
-   $(this).text('X');
-   $(this).css('color', 'red');
-   $(this).unbind("click");
+      let squareToMark0, wins,
+      selectedSquare = textToNumber[this.id];
 
-   if (markedWithX.length > 2) {
-      wins = await checkForWin();
+      markedSquares.push(selectedSquare);
+      markedWithX.push(selectedSquare);
+      // let div = document.createElement('div');
+      // $(div).text('X')
+      // $(this).append($(div));
+      // $(this).attr('id', 'marked');
+      $(this).text('X');
+      $(this).css('color', 'red');
+      $(this).unbind("click");
 
-      // console.log(s);
-      if (wins.indexOf('X') > -1) {
-         declareWinner('X');
-         return;
+      if (markedWithX.length > 2) {
+         wins = await checkForWin();
+
+         // console.log(s);
+         if (wins.indexOf('X') > -1) {
+            declareWinner('X');
+            return;
+         }
       }
+
+      getSquareFor0(selectedSquare).then(markSquareFor0);
+
+   });
+}
+
+function processMultiPlayer() {
+   console.log('processMultiPlayer');
+   let player = 'x';
+   $("td").click(async function() {
+      console.log('td click');
+      let squareToMark0, wins,
+      selectedSquare = textToNumber[this.id];
+
+      markedSquares.push(selectedSquare);
+      console.log('player: ', player);
+      if(player === 'x') {
+         console.log('skdfklsd');
+         markedWithX.push(selectedSquare);
+         $(this).text('X');
+         $(this).css('color', 'red');
+         $(this).unbind("click");
+
+         if (markedWithX.length > 2) {
+            wins = await checkForWin();
+
+            // console.log(s);
+            if (wins.indexOf('X') > -1) {
+               declareWinner('X');
+               return;
+            }
+         }
+         player = '0';
+      } else if(player === '0') {
+         markedWith0.push(selectedSquare);
+         $(this).text('O');
+         $(this).css('color', 'green');
+         $(this).unbind("click");
+
+         if (markedWith0.length > 2) {
+            wins = await checkForWin();
+
+            // console.log(s);
+            if (wins.indexOf('0') > -1) {
+               declareWinner('0');
+               return;
+            }
+         }
+         player = 'x';
+      }
+
+   })
+}
+
+(function setProfile() {
+
+   let params = getQueryParams();
+   // console.log('params: ', params)
+   if (params.level) {
+      noOfPlayers = '1';
+      level = params.level;
+      let p1 = $('<p />', {text: 'Player'})
+      let h = $('<h2>'+params.uname+'</h2>');
+
+      if(params.uname && params.uname.length > 10) {
+         h = $('<h2 title='+params.uname+'>'+params.uname.slice(0,7)+'...</h2>');
+      }
+
+      let p2 = $('<p>'+ 'Level: '+ level+'</p>')
+
+      $('#uname').append(p1, h);
+      $('#level').append(p2);
+   } else {
+      noOfPlayers = '2';
+      let p1 = $('<p />', {text: 'Player1'})
+      let h = $('<h2>'+params.uname1+'</h2>');
+      let p2 = $('<p />', {text: 'Player1'})
+      let h1 = $('<h2>'+params.uname2+'</h2>');
+
+      if(params.uname1 && params.uname1.length > 10) {
+         h = $('<h2 title='+params.uname1+'>'+params.uname1.slice(0,7)+'...</h2>');
+      }
+      if(params.uname2 && params.uname2.length > 10) {
+         h1 = $('<h2 title='+params.uname2+'>'+params.uname2.slice(0,7)+'...</h2>');
+      }
+
+      $('#uname').append(p1, h, p2, h1);
    }
+   console.log('noOfPlayers: ', noOfPlayers);
 
-   getSquareFor0(selectedSquare).then(markSquareFor0);
-
-});
+   if (noOfPlayers === '1') {
+      processSinglePlayer();
+   } else {
+      console.log('sdf');
+      processMultiPlayer();
+   }
+})();

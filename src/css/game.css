@@ -10,9 +10,14 @@ td {
    float: left;
    padding: 2px;
    text-align: center;
+   font-size: 30px;
    /* text-decoration-style: solid; */
    position: relative;
    /* background-color: red */
+}
+
+form {
+   visibility: visible;
 }
 
 .main {
@@ -59,8 +64,10 @@ td {
 }
 
 #game_area {
-   float: inherit;
+   float: left;
    padding-top: 20px;
+   /* padding-right: 40px; */
+   /* left: 100; */
 }
 
 #title {
@@ -118,10 +125,20 @@ td {
    position: relative;
    overflow: hidden;
    background-color: #E7E7E8;
-   max-width: 140px
+   max-width: 140px;
+   width: 100px
    /* padding: 10px; */
    /* border-right: 1px solid black; */
 
+}
+
+#game_details {
+   border-left: 1px solid gray;
+   float: right;
+   height: 100%;
+   width: 200px;
+   right: 0;
+   padding-top: -100%
 }
 
 #one {
