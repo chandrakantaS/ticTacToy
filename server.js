@@ -13,7 +13,7 @@ app.get('/*.html', function(req, res) {
    res.sendFile(path.join(__dirname + '/src/html'+req._parsedUrl.pathname))
 });
 app.get('*.js', function(req, res) {
-   res.sendFile(path.join(__dirname + '/dist/bundle.js'));
+   res.sendFile(path.join(__dirname + '/build/bundle.js'));
 })
 
 app.listen(8000);

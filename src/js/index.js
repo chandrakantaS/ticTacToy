@@ -28,9 +28,8 @@ let level, noOfPlayers;
 
 function getPossibleWin() {
    // console.log('markedWith0: ', markedWith0);
-   const promises = [];
-
-   remainedEles = []
+   const promises = [],
+   remainedEles = [];
    winningCombos.forEach(arr => {
       promises.push(
          new Promise(res => {
@@ -211,7 +210,7 @@ function validateForm2() {
       // // console.log('x: ', x)
       // document.forms["myForm1"]["uname"].value = x;
       return true;
-      
+
    }
 
 }
@@ -339,7 +338,7 @@ async function markSquareFor0(squareToMark0) {
    markedSquares.push(textToNumber[squareToMark0]);
 
    if (markedWith0.length > 2) {
-      wins = await checkForWin();
+      const wins = await checkForWin();
 
       // console.log(s);
       if (wins.indexOf('0') > -1) {
