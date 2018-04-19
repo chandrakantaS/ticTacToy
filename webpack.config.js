@@ -10,12 +10,23 @@ module.exports = {
     path: path.resolve(__dirname, 'build')
   },
   module: {
-    rules: [{
-      loader: 'babel-loader',
-      query: {
-        presets: ['env']
+    rules: [
+      {
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['env']
+          // compact: false
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" }
+        ]
       }
-    }]
+    ]
   },
   stats: {
     colors: true

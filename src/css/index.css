@@ -1,0 +1,106 @@
+body {
+  font:14px Century Gothic,Futura,sans-serif;
+  /* margin:20px */
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.title {
+  text-align: center;
+  /* margin-top: -1%; */
+  color: #C70039;
+}
+
+#root {
+  /* padding: 16px; */
+  /* margin-top: 40; */
+  /* margin-left: 200px; */
+}
+
+#game_details {
+  border-left: 1px solid gray;
+  float: right;
+  height: 100%;
+  width: 200px;
+  right: 0;
+  margin-top: -40;
+}
+
+.leftnav {
+  /* margin: 80px; */
+  /* color: #030C68; */
+  float: left;
+  /* top: -8; */
+  /* left: -16; */
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #E7E7E8;
+  max-width: 140px;
+  width: 100px
+  /* padding: 10px; */
+  /* border-right: 1px solid black; */
+
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #E0E0E3;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* opacity: 0.5; */
+  /* filter: alpha(opacity=50); */
+  /* height: 60px; */
+}
+
+.playerForm {
+  margin-left: 25%;
+  float: left;
+  padding: 10;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
